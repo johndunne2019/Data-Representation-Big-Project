@@ -6,7 +6,9 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
     <body>
+        <!-- Heading to appear on index.html page -->
         <h1>Ireland Suckler Breeding Stock Bulls</h1>
+        <!-- div that will contain the table of bulls returned from the server -->
         <div> <button id="showCreateButton" onclick="showCreate()">Create</button></div>
         <div>
             <table class="table" id="bullTable">
@@ -23,14 +25,15 @@
                 </tr> 
             </table>
         </div>
-
+        <!-- div that will be displayed when the user decides to create a new bull -->
+        <!-- display set to none by default, form will be displayed when create button is clicked -->
         <div id='createUpdateForm' style="display: none">
-            <h2><span id="createLabel">Create a</span> <span id="updateLabel">update</span> Book</h2>
+            <h2><span id="createLabel">Create and</span> <span id="updateLabel">update</span> Bulls</h2>
             <input type="hidden" name="id"/>
             Code <input type="text" name="Code" /><br/>
             Name <input type="text" name="Name"/> <br/>
-            Breed <input type="number" name="Breed"/> <br/>
-            Owner <input type="number" name="Owner"/> <br/>
+            Breed <input type="text" name="Breed"/> <br/>
+            Owner <input type="text" name="Owner"/> <br/>
             <span><button id="doCreateButton" onclick="doCreate()">Create</button></span>
             <span><button id="doUpdateButton" onclick="doUpdate()">Update</button></span>
         </div>
@@ -38,28 +41,88 @@
     </body>
 
     <script>
-        
-        function addBullToTable(bull){
-        var tableElement = document.getElementById('bullTable')
-        var rowElement = tableElement.insertRow(-1)
-        rowElement.setAttribute('id',bull.id)
-        var cell1 = rowElement.insertCell(0);
-        cell1.innerHTML = bull.id
-        var cell2 = rowElement.insertCell(1);
-        cell2.innerHTML = bull.code
-        var cell3 = rowElement.insertCell(2);
-        cell3.innerHTML = bull.name
-        var cell4 = rowElement.insertCell(3);
-        cell4.innerHTML = bull.breed
-        var cell5 = rowElement.insertCell(4);
-        cell5.innerHTML = bull.owner
-        var cell6 = rowElement.insertCell(5);
-        cell6.innerHTML = '<button onclick="showUpdate(this)">Update</button>'
-        var cell7 = rowElement.insertCell(6);
-        cell7.innerHTML = '<button onclick=doDelete(this)>delete</button>'
+
+        // function to display the create form when the user clicks the create button on the index.html page
+        function showCreate(){
+            document.getElementById('showCreateButton').style.display="none"
+            document.getElementById('bullTable').style.display="none"
+            document.getElementById('createUpdateForm').style.display="block"
+
+            document.getElementById('createLabel').style.display="inline"
+            //document.getElementById('updateLabel').style.display="none"
+
+            document.getElementById('doCreateButton').style.display="block"
+            //document.getElementById('doUpdateButton').style.display="none"
         }
 
+        // function to display the update bull table after a create has been done, called within the Ajax create function
+        function showViewAll(){
+            document.getElementById('showCreateButton').style.display="block"
+            document.getElementById('bullTable').style.display="block"
+            document.getElementById('createUpdateForm').style.display="none"
+        }
+
+        // function that actions the create when the create form is filled in and create button is clicked by the user  
+        // calls the Ajax create function
+        function doCreate(){
+            var form = document.getElementById('createUpdateForm')
+
+            var bull = {}
+       
+            bull.code = form.querySelector('input[name="Code"]').value
+            bull.name = form.querySelector('input[name="Name"]').value
+            bull.breed = form.querySelector('input[name="Breed"]').value
+            bull.owner = form.querySelector('input[name="Owner"]').value
+            console.log(JSON.stringify(bull))
+            createBullAjax(bull)     
+        }
+
+        // function that outputs the user input to the console in a JSON string 
+        function getBullFromForm(){
+            var form = document.getElementById('createUpdateForm')
+            var bull = {}
+            bull.id = form.querySelector('input[name="id"]').value
+            bull.Code = form.querySelector('input[name="Code"]').value
+            bull.Name = form.querySelector('input[name="Name"]').value
+            bull.Breed = form.querySelector('input[name="Breed"]').value
+            bull.Owner = form.querySelector('input[name="Owner"]').value
+            console.log(JSON.stringify(bull))
+            return bull
+        }
         
+        // function to populate the bull table
+        // function is called inside the function getAllAjax to populate the table with the data returned from the server via Ajax call
+        function addBullToTable(bull){
+            var tableElement = document.getElementById('bullTable')
+            var rowElement = tableElement.insertRow(-1)
+            rowElement.setAttribute('id',bull.id)
+            var cell1 = rowElement.insertCell(0);
+            cell1.innerHTML = bull.id
+            var cell2 = rowElement.insertCell(1);
+            cell2.innerHTML = bull.code
+            var cell3 = rowElement.insertCell(2);
+            cell3.innerHTML = bull.name
+            var cell4 = rowElement.insertCell(3);
+            cell4.innerHTML = bull.breed
+            var cell5 = rowElement.insertCell(4);
+            cell5.innerHTML = bull.owner
+            var cell6 = rowElement.insertCell(5);
+            cell6.innerHTML = '<button onclick="showUpdate(this)">Update</button>'
+            var cell7 = rowElement.insertCell(6);
+            cell7.innerHTML = '<button onclick=doDelete(this)>delete</button>'
+        }
+
+        // function that clears the create form once the create is complete, called from withing the Ajax create function
+        function clearForm(){
+            var form = document.getElementById('createUpdateForm')
+
+            form.querySelector('input[name="Code"]').value=''
+            form.querySelector('input[name="Name"]').value=''
+            form.querySelector('input[name="Breed"]').value=''
+            form.querySelector('input[name="Owner"]').value=''
+        }
+
+        // Ajax call to return all bulls from the bulls page on the server 
         function getAllAjax(){
         $.ajax({
             "url": "http://127.0.0.1:5000/bulls",
@@ -78,6 +141,30 @@
             }
         });
         }
+
+        // Ajax call to create a new bull in the database
+        function createBullAjax(bull){
+        //var car = {"reg":"12 D 1234","make":"Fiat","model":"Punto","price":3000}
+        console.log(JSON.stringify(bull));
+        $.ajax({
+            "url": "http://127.0.0.1:5000/bulls",
+            "method":"POST",
+            "data":JSON.stringify(bull),
+            "dataType": "JSON",
+            contentType: "application/json; charset=utf-8",
+            "success":function(result){
+                //console.log(result);
+                bull.id = result.id
+                addBullToTable(bull)
+                clearForm()
+                showViewAll()
+            },
+            "error":function(xhr,status,error){
+                console.log("error: "+status+" msg:"+error);
+            }
+        });
+    }
+        // the function that runs and Ajax call to return all bulls is called when the index.html page loads
         getAllAjax();
       
 
