@@ -77,18 +77,28 @@
             createBullAjax(bull)     
         }
 
-        // function that outputs the user input to the console in a JSON string 
-        function getBullFromForm(){
-            var form = document.getElementById('createUpdateForm')
-            var bull = {}
-            bull.id = form.querySelector('input[name="id"]').value
-            bull.Code = form.querySelector('input[name="Code"]').value
-            bull.Name = form.querySelector('input[name="Name"]').value
-            bull.Breed = form.querySelector('input[name="Breed"]').value
-            bull.Owner = form.querySelector('input[name="Owner"]').value
-            console.log(JSON.stringify(bull))
-            return bull
+        // function to delete a bull rom the database, Ajax delete function called inside this function
+        function doDelete(r){
+            var tableElement = document.getElementById('bullTable');
+            var rowElement = r.parentNode.parentNode;
+            var index = rowElement.rowIndex;
+            deleteBullAjax(rowElement.getAttribute("id"));
+            tableElement.deleteRow(index);
         }
+
+        // not needed 
+        // function that outputs the user input to the console in a JSON string 
+        //function getBullFromForm(){
+            //var form = document.getElementById('createUpdateForm')
+            //var bull = {}
+           // bull.id = form.querySelector('input[name="id"]').value
+           // bull.Code = form.querySelector('input[name="Code"]').value
+           // bull.Name = form.querySelector('input[name="Name"]').value
+           // bull.Breed = form.querySelector('input[name="Breed"]').value
+          //  bull.Owner = form.querySelector('input[name="Owner"]').value
+          //  console.log(JSON.stringify(bull))
+          //  return bull
+       // }
         
         // function to populate the bull table
         // function is called inside the function getAllAjax to populate the table with the data returned from the server via Ajax call
@@ -163,7 +173,27 @@
                 console.log("error: "+status+" msg:"+error);
             }
         });
-    }
+        }
+
+        // function to delete bulls from database 
+        function deleteBullAjax(id){
+        
+            //console.log(JSON.stringify('deleting '+id));
+            $.ajax({
+                "url": "http://127.0.0.1:5000/bulls/"+encodeURI(id),
+                "method":"DELETE",
+                "data":"",
+                "dataType": "JSON",
+                contentType: "application/json; charset=utf-8",
+                "success":function(result){
+                //console.log(result);
+                  
+                },
+                "error":function(xhr,status,error){
+                    console.log("error: "+status+" msg:"+error);
+                }
+            });
+        }
         // the function that runs and Ajax call to return all bulls is called when the index.html page loads
         getAllAjax();
       
