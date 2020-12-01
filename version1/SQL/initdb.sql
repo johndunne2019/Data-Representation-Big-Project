@@ -20,8 +20,3 @@ insert into bulls(code, name, breed, owner) VALUES
 
 select * from bulls;
 
-
-
-
-
-

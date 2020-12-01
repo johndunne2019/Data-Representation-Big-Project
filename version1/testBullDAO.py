@@ -9,25 +9,25 @@ bull1 = {
 }
 
 # create a new bull in the bulls database table
-returnValue = bullDao.create(bull1)
-print(returnValue)
+#returnValue = bullDao.create(bull1)
+#print(returnValue)
 
 # get all bulls in the database 
-returnValue = bullDao.getAll()
-print(returnValue)
+#returnValue = bullDao.getAll()
+#print(returnValue)
 
 # find by Id
-returnValue = bullDao.findById(bull1['code'])
-print(returnValue)
+#returnValue = bullDao.findById(bull1['code'])
+#print(returnValue)
 
 # update
-returnValue = bullDao.update(bull1)
-print(returnValue)
+#returnValue = bullDao.update(bull1)
+#print(returnValue)
 
 # find by Id
-returnValue = bullDao.findById(bull1['code'])
-print(returnValue)
+#returnValue = bullDao.findById(bull1['code'])
+#print(returnValue)
 
 # delete
-returnValue = bullDao.delete(bull1['code'])
+returnValue = bullDao.delete(bull1['id'])
 print(returnValue)
