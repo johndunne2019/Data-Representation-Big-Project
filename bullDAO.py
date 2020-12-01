@@ -1,14 +1,24 @@
 import mysql.connector
+import dbconfig as cfg
 
 class BullDAO:
     db=""
-    def __init__(self):
+    #def __init__(self):
         # should be read from a configuration file in production environment 
+        #self.db = mysql.connector.connect(
+            #host = 'localhost',
+            #user = 'root',
+           # password = '',
+           # database = 'bullfinder'
+        #)
+       #print("connection made")
+
+    def __init__(self): 
         self.db = mysql.connector.connect(
-            host = 'localhost',
-            user = 'root',
-            password = '',
-            database = 'bullfinder'
+        host=       cfg.mysql['host'],
+        user=       cfg.mysql['user'],
+        password=   cfg.mysql['password'],
+        database=   cfg.mysql['database']
         )
         print("connection made")
     

@@ -32,7 +32,7 @@
         <!-- div that will be displayed when the user decides to create a new bull -->
         <!-- display set to none by default, form will be displayed when create button is clicked -->
         <div id='createUpdateForm' style="display: none">
-            <h2><span id="createLabel">Create a new bull</span> <span id="updateLabel">Update</span> existing bulls</h2>
+            <h2><span id="createLabel">Create a new bull</span> <span id="updateLabel">Update existing bulls</span> </h2>
             <!-- id wont be shown in the create form as I dont want the user to enter an id -->
             <input type="hidden" name="id"/>
             <!-- code, name, breed and owner input text boxes to be populated by user -->
@@ -41,7 +41,8 @@
             Breed <input type="text" name="Breed"/> <br/>
             Owner <input type="text" name="Owner"/> <br/>
             <!-- Create button which calls the doCreate function when clicked -->
-            <span><button id="doCreateButton" onclick="doCreate()">Create</button></span>
+            <!-- User also has an option to abandon create and return to the index -->
+            <span><button id="doCreateButton" onclick="doCreate()">Create</button><button id="returnToIndex" onclick="showViewAll()">Return to index</button></span>
             <!-- Update button which calls the doUpdate function when clicked -->
             <span><button id="doUpdateButton" onclick="doUpdate()">Update</button></span>
         </div>
