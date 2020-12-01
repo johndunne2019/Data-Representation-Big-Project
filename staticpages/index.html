@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <title> View Bulls</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <h1>Ireland Suckler Breeding Stock Bulls</h1>
+        <div> <button id="showCreateButton" onclick="showCreate()">Create</button></div>
+        <div>
+            <table class="table" id="bullTable">
+                <tr>
+                        <th>id</th>
+                        <th>Code</th>
+                        <th>
+                            Name
+                        </th>
+                        <th>Breed</th>
+                        <th>Owner</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                </tr> 
+            </table>
+        </div>
+
+        <div id='createUpdateForm' style="display: none">
+            <h2><span id="createLabel">Create a</span> <span id="updateLabel">update</span> Book</h2>
+            <input type="hidden" name="id"/>
+            Code <input type="text" name="Code" /><br/>
+            Name <input type="text" name="Name"/> <br/>
+            Breed <input type="number" name="Breed"/> <br/>
+            Owner <input type="number" name="Owner"/> <br/>
+            <span><button id="doCreateButton" onclick="doCreate()">Create</button></span>
+            <span><button id="doUpdateButton" onclick="doUpdate()">Update</button></span>
+        </div>
+
+    </body>
+
+    <script>
+        
+        function addBullToTable(bull){
+        var tableElement = document.getElementById('bullTable')
+        var rowElement = tableElement.insertRow(-1)
+        rowElement.setAttribute('id',bull.id)
+        var cell1 = rowElement.insertCell(0);
+        cell1.innerHTML = bull.id
+        var cell2 = rowElement.insertCell(1);
+        cell2.innerHTML = bull.code
+        var cell3 = rowElement.insertCell(2);
+        cell3.innerHTML = bull.name
+        var cell4 = rowElement.insertCell(3);
+        cell4.innerHTML = bull.breed
+        var cell5 = rowElement.insertCell(4);
+        cell5.innerHTML = bull.owner
+        var cell6 = rowElement.insertCell(5);
+        cell6.innerHTML = '<button onclick="showUpdate(this)">Update</button>'
+        var cell7 = rowElement.insertCell(6);
+        cell7.innerHTML = '<button onclick=doDelete(this)>delete</button>'
+        }
+
+        
+        function getAllAjax(){
+        $.ajax({
+            "url": "http://127.0.0.1:5000/bulls",
+            "method":"GET",
+            "data":"",
+            "dataType": "JSON",
+            "success":function(result){
+                //console.log(result);
+                for (bull of result){
+                    addBullToTable(bull);
+                }
+                
+            },
+            "error":function(xhr,status,error){
+                console.log("error: "+status+" msg:"+error);
+            }
+        });
+        }
+        getAllAjax();
+      
+
+    </script>
+
+</html>
