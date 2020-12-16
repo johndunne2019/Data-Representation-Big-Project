@@ -4,7 +4,7 @@ CREATE DATABASE bullfinder;
 use bullfinder 
 
 CREATE TABLE bulls (
-    id AUTO_INCREMENT PRIMARY KEY, 
+    id INT AUTO_INCREMENT PRIMARY KEY,
     code VARCHAR(10),
     name VARCHAR(250), 
     breed VARCHAR(250), 

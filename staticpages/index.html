@@ -6,10 +6,45 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style type = "text/css"> 
+        .body {
+            background-color: #9e9e9ebd;
+            }
+
+        .headings {
+		    text-align: center;
+		    margin: 10px;
+		    color: white;
+		    background-color: #2200ffb3;
+		    font-family: Calibri;
+		    font-size: 40px;
+		    padding: 30px;
+		    border-style: solid;
+		    border-color: black;
+		    border-width: 5px;
+	        }
+	
+	    .paragraphs{
+		    text-align: center;
+		    margin: 10px;
+		    background-color: #aeff0066;
+		    color: black;
+		    font-family: Calibri;
+		    font-weight: bold;
+		    font-size: 25px;
+		    padding: 30px;
+		    border-style: solid;
+		    border-color: black;
+		    border-width: 5px;
+	        }
+        </style> <!-- closing style tag-->
     </head>
-    <body>
-        <!-- Heading to appear on index.html page -->
-        <h1>Ireland Suckler Breeding Stock Bulls</h1>
+    <body class="body">
+        <!-- heading 1 has been created containing the name of the webpage and assigned a CSS class -->
+        <h1 class="headings">Suckler Farming Ireland</h1> 
+
+        <!-- heading 2 has been created containing information about the purpose of this webpage and assigned a CSS class -->
+        <h2 class="paragraphs">Welcome to Suckler Farming Ireland which is a website that provides users with the most up to date information pertaining to Suckler farming in Ireland today.</h2>
         <!-- div that will contain the table of bulls returned from the server -->
         <!-- Create button that the user can click to create a new entry in the table, it calls the showCreate function which displays the create form -->
         <div> <button id="showCreateButton" onclick="showCreate()">Create</button></div>
