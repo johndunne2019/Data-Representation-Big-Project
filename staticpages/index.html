@@ -6,6 +6,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- CSS styles added below-->
         <style type = "text/css"> 
         .body {
             background-color: #9e9e9ebd;
@@ -36,6 +37,34 @@
 		    border-style: solid;
 		    border-color: black;
 		    border-width: 5px;
+	        }
+
+        .quiz {
+		    text-align: center;
+		    margin: 10px;
+		    color: black;
+		    background-color: white;
+		    font-family: Calibri;
+		    font-weight: bold;
+		    padding: 40px;
+		    border-style: dashed;
+		    border-color: orange;
+		    border-width: 5px;
+		    font-size: 22px;
+	        }
+
+            .create {
+		    text-align: center;
+		    margin: 10px;
+		    color: black;
+		    background-color: white;
+		    font-family: Calibri;
+		    font-weight: bold;
+		    padding: 40px;
+		    border-style: dashed;
+		    border-color: black;
+		    border-width: 5px;
+		    font-size: 22px;
 	        }
         </style> <!-- closing style tag-->
     </head>
@@ -77,7 +106,7 @@
         </div>
         <!-- div that will be displayed when the user decides to create a new bull -->
         <!-- display set to none by default, form will be displayed when create button is clicked -->
-        <div id='createUpdateForm' style="display: none">
+        <div class="create" id='createUpdateForm' style="display: none">
             <h2><span id="createLabel">Create a new bull</span> <span id="updateLabel">Update existing bulls</span> </h2>
             <!-- id wont be shown in the create form as I dont want the user to enter an id -->
             <input type="hidden" name="id"/>
@@ -88,12 +117,37 @@
             Owner <input type="text" name="Owner"/> <br/>
             <!-- Create button which calls the doCreate function when clicked -->
             <!-- User also has an option to abandon create and return to the index -->
-            <span><button id="doCreateButton" onclick="doCreate()">Create</button><button id="returnToIndex" onclick="showViewAll()">Return to index</button></span>
+            <span><button id="doCreateButton" onclick="doCreate()">Create</button></span>
+            <span><button id="returnToIndex" onclick="showViewAll()">Return to index</button></span>
             <!-- Update button which calls the doUpdate function when clicked -->
             <span><button id="doUpdateButton" onclick="doUpdate()">Update</button></span>
         </div>
+
+        <!-- I have added a div containing a quiz question with 2 buttons which have onclick events that call JavaScript functions -->
+        <!-- The purpose of this quiz is to have the user access and change HTML on the webpage through the DOM through an onclick event  -->
+        <!-- I have applied an id to the div in order for the JavaScript function to access the div through the DOM query -->
+        <div id="text" class ="quiz">Test Your Knowledge
+            <br>
+            <br>
+            True or False: Ireland is the largest exporter of beef in the European Union
+            <br>
+            <br>
+            <button class="button" onclick="changeText1()">True</button> <!-- function called on click event -->
+            <button class="button" onclick="changeText2()">False</button>
+        </div>
     </body>
     <script>
+        // functions for the quiz 
+        // I have added 2 functions to access and change HTML on the webpage through the DOM depending on the button the user clicks
+        function changeText1(){
+	        document.getElementById("text").innerHTML = "Congratulations your answer is correct";
+	        document.getElementById("text").style.color ="green";
+	    }
+        function changeText2(){
+	        document.getElementById("text").innerHTML = "Incorrect answer";
+            document.getElementById("text").style.color ="red";
+        }
+        
         // function to display the create form when the user clicks the create button on the index.html page
         // the main table of bulls is hidden and the create form is displayed 
         function showCreate(){
