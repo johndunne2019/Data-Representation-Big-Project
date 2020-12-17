@@ -1,0 +1,111 @@
+<!-- Data Representation Big Project John Dunne G00273895 -->
+<html> 
+<head>  
+	<title>Login page</title>
+	<!-- I have added CSS style attributes for various CSS classes between the opening & closing style tags below, all comments for CSS styles added here as they caused issues when added inside style tags-->
+	<!-- CSS style added for the body of the document in a class called body -->
+	<!-- CSS style added for the heading of the page in a class called headings  -->
+	<!-- CSS style added for the paragraphs and divs in a class called paragraphs -->
+	<!-- CSS style added for the input boxes in a class called enter details -->
+	<!-- CSS style added for the submit button to submit form in a class called submitbutton-->
+	<style type = "text/css"> 
+	.body {
+		background-color: #9e9e9ebd;
+	}
+	
+	.headings {
+		text-align: center;
+		margin: 10px;
+		color: white;
+		background-color: #2200ffb3;
+		font-family: Calibri;
+		font-size: 40px;
+		padding: 30px;
+		border-style: solid;
+		border-color: black;
+		border-width: 5px;
+	}
+	
+	.paragraphs{
+		text-align: center;
+		margin: 10px;
+		background-color: #aeff0066;
+		color: black;
+		font-family: Calibri;
+		font-weight: bold;
+		font-size: 25px;
+		padding: 30px;
+		border-style: solid;
+		border-color: black;
+		border-width: 5px;
+	}
+	
+	.enterdetails {
+		width: 200px;
+		font-size: 15px;
+		font-family: Calibri;
+		padding: 5px;
+		background-color: white;
+		color: black;
+		border: 2px solid black;
+	}
+	
+	.submitButton {
+		width: 200px;
+		font-size: 20px;
+		font-family: Calibri;
+		font-weight: bold;
+		text-align: center;
+		padding: 5px;
+		background-color: white;
+		color: black;
+		border: 2px solid black;
+	}
+
+	</style> 
+</head> 	
+<!-- I have applied a CSS style class to the body of the document -->
+<body class="body">
+
+<!-- heading 1 has been created containing the name of the webpage and assigned a CSS class -->
+<h1 class="headings">Suckler Farming Ireland</h1> 
+
+<!-- I have added a div inside which I have added a form with inputs and a submit button -->
+<!-- Taking input from user in the way described in lectures -->
+<!-- Validation will be done on email automatically by specifying the input as email which is a HTML5 feature -->
+<!-- I have also added the required attribute to have all fields filled -->
+<!-- Further details on forms, form action, submit and input types: https://www.w3schools.com/html/html_forms.asp -->
+<div class="paragraphs">
+Please enter your log in credentials below to enter the website:
+<br>
+<br>
+	<form action="index.html">   <!-- action attribute defines the action to be completed when form submitted -->
+        First Name: <br>  <!-- I will name each input and specify the input type below each one -->
+        <input class="enterdetails" type="text" name="first name" required><br>   <!-- name attribute added as per examples covered in week 3 exercises -->
+		<br> <!-- break tag to break on to next line -->
+		<!-- required attribute added to ensure user enters something in each field: https://www.w3schools.com/tags/att_input_required.asp -->
+        Last Name: <br>
+        <input class="enterdetails" type="text" name="last name" required><br>
+		<br>
+        Email Address: <br> <!-- input type email will validate input to ensure @ sybmol and text after @ symbol is included -->
+        <input class="enterdetails" type="email" name="email" required><br>
+		<br>
+		Password: <br>	<!-- input type password - text entered will not be shown -->
+		<input class="enterdetails" type="password" name="password" required><br>
+		<br>
+		<input class="submitButton" type="submit" value="Submit Details">  <!-- Submit input type will allow details to be submitted -->
+	</form>
+</div>
+
+<!-- I have added a div containing my own images -->
+<!-- image added using the img tag, width and height specified in pixels-->
+<!-- alt text will be displayed when there is a problem displaying the image-->
+<div class="headings">
+<img src= "images/Image5.JPG" align="center" width="300" height="200" alt= "Bull & calves" title= "Bull & calves">
+<img src= "images/Image6.JPG" align="center" width="300" height="200" alt= "Hereford cow & calf" title= "Hereford cow & calf">
+<img src= "images/Image7.JPG" align="center" width="300" height="200" alt= "Winter" title= "Winter">
+<img src= "images/Image8.JPG" align="center" width="300" height="200" alt= "Charlaois cow & calf" title= "Charlaois cow & calf">
+</div>
+
+</body> 	<!-- closing body tag -->
+</html>		<!-- closing html tag -->

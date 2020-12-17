@@ -1,8 +1,8 @@
+<!-- Data Representation Big Project John Dunne G00273895 -->
+<!-- Adapted from lecture code - https://github.com/andrewbeattycourseware/dataRepresenation2020/blob/master/code/week09-server1linktoDB.py/bookviewer.html -->
 <html>
     <head>
         <title> Bull Viewer </title>
-        <!-- G00272895 John Dunne -->
-        <!-- Adapted from lecture code - https://github.com/andrewbeattycourseware/dataRepresenation2020/blob/master/code/week09-server1linktoDB.py/bookviewer.html -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -53,7 +53,7 @@
 		    font-size: 22px;
 	        }
 
-            .create {
+        .create {
 		    text-align: center;
 		    margin: 10px;
 		    color: black;
@@ -66,12 +66,38 @@
 		    border-width: 5px;
 		    font-size: 22px;
 	        }
+
+        .headerbar {
+		    position: relative;
+            background-color: #9e9e9ebd;
+            text-align: center;
+		    margin: 10px;
+		    padding: 20px;
+		    border-style: solid;
+		    border-color: black;
+		    border-width: 5px;
+	        }
+
+        .button {
+		    width: 250px;
+		    font-size: 30px;
+		    font-family: Arial;
+		    font-weight: bold;
+		    text-align: center;
+		    padding: 5px;
+		    background-color: white;
+		    color: black;
+		    border: 2px solid #4CAF50;
+	        }
         </style> <!-- closing style tag-->
     </head>
     <body class="body">
         <!-- heading 1 has been created containing the name of the webpage and assigned a CSS class -->
         <h1 class="headings">Suckler Farming Ireland</h1> 
-
+        <div class="headerbar"> <!-- CSS style div class applied here -->
+        <!-- Log out button that redirects the user to the Login page -->
+        <button class="button" onclick= "window.location.href= 'Login.html';">Logout</button> 
+        </div>
         <!-- heading 2 has been created containing information about the purpose of this webpage and assigned a CSS class -->
         <h2 class="paragraphs">Welcome to Suckler Farming Ireland which is a website that provides users with the most up to date information pertaining to Suckler farming in Ireland today.</h2>
         
@@ -82,7 +108,10 @@
             <img src= "images/Image1.JPG" align="center" width="300" height="200" alt= "Cow & Calf" title= "Cow & Calf">
             <img src= "images/Image2.JPG" align="center" width="300" height="200" alt= "Red cow & Calf" title= "Red cow & Calf">
             <img src= "images/Image3.JPG" align="center" width="300" height="200" alt= "Black & white cow" title= "Black & white cow">
-            <img src= "images/Image4.Jpeg" align="center" width="300" height="200" alt= "Bull" title= "Bull">
+            <img src= "images/Image4.Jpeg" align="center" width="300" height="200" alt= "Bull" title= "Bull"><br/>
+
+            <h3>Listed below are the most popular AI bulls in Ireland today extracted from the bulls SQL database</h3>
+            <h3>If you want to create an new entry in the table or update a current entry please feel free to do so</h3>
         </div>
         
         <!-- div that will contain the table of bulls returned from the server -->
