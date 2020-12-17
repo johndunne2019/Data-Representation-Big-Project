@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <title> Bull Viewer </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body class="body">
+        <div>
+            <table class="table" id="bullTable">
+                <tr>
+                        <!-- table headings set -->
+                        <th>Code</th>
+                        <th>Sire</th>
+                        <th>Dam</th>
+                        <th>Calving %</th>
+                        <th>ID</th>
+                </tr> 
+            </table>
+        </div>
+    </body>
+    <script>
+        // function to populate the bull table
+        // function is called inside the function getAllAjax to populate the table with the data returned from the server via Ajax call
+        function addBullToTable(bull){
+            var tableElement = document.getElementById('bullTable')
+            var rowElement = tableElement.insertRow(-1)
+            var cell1 = rowElement.insertCell(0);
+            cell1.innerHTML = bull.code
+            var cell2 = rowElement.insertCell(1);
+            cell2.innerHTML = bull.sire
+            var cell3 = rowElement.insertCell(2);
+            cell3.innerHTML = bull.dam
+            var cell4 = rowElement.insertCell(3);
+            cell4.innerHTML = bull.calving
+            var cell5 = rowElement.insertCell(4);
+            cell5.innerHTML = bull.id
+        }
+
+             // Ajax call to get all bulls from the bulls page on the server 
+        function getAllAjax(){
+        $.ajax({
+            "url": "http://127.0.0.1:5000/bulldetails",
+            "method":"GET",
+            "data":"",
+            "dataType": "JSON",
+            "success":function(result){
+                //console.log(result);
+                for (bull of result){
+                    addBullToTable(bull);
+                }
+                
+                },
+                "error":function(xhr,status,error){
+                    console.log("error: "+status+" msg:"+error);
+                }
+            });
+        }
+        getAllAjax();
+    </script>
+</html>

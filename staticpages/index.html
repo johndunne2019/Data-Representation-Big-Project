@@ -89,12 +89,13 @@
 		    color: black;
 		    border: 2px solid #4CAF50;
 	        }
-        </style> <!-- closing style tag-->
+        </style> 
     </head>
     <body class="body">
         <!-- heading 1 has been created containing the name of the webpage and assigned a CSS class -->
         <h1 class="headings">Suckler Farming Ireland</h1> 
-        <div class="headerbar"> <!-- CSS style div class applied here -->
+        <!-- CSS style div class applied here -->
+        <div class="headerbar"> 
         <!-- Log out button that redirects the user to the Login page -->
         <button class="button" onclick= "window.location.href= 'Login.html';">Logout</button> 
         </div>
@@ -146,10 +147,9 @@
             Owner <input type="text" name="Owner"/> <br/>
             <!-- Create button which calls the doCreate function when clicked -->
             <!-- User also has an option to abandon create and return to the index -->
-            <span><button id="doCreateButton" onclick="doCreate()">Create</button></span>
+            <span><button id="doCreateButton" onclick="doCreate()">Create</button></span><span><button id="doUpdateButton" onclick="doUpdate()">Update</button></span>
             <span><button id="returnToIndex" onclick="showViewAll()">Return to index</button></span>
             <!-- Update button which calls the doUpdate function when clicked -->
-            <span><button id="doUpdateButton" onclick="doUpdate()">Update</button></span>
         </div>
 
         <!-- I have added a div containing a quiz question with 2 buttons which have onclick events that call JavaScript functions -->
@@ -187,7 +187,7 @@
             document.getElementById('createLabel').style.display="inline"
             document.getElementById('updateLabel').style.display="none"
 
-            document.getElementById('doCreateButton').style.display="block"
+            document.getElementById('doCreateButton').style.display="inline"
             document.getElementById('doUpdateButton').style.display="none"
         }
 

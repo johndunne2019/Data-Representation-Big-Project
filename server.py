@@ -49,6 +49,14 @@ def getAll():
     results = bullDAO.getAll()
     return jsonify(results)
 
+# get all
+#curl "http://127.0.0.1:5000/bulls"
+@app.route('/bulldetails')
+def getAllDetails():
+    #print("in getall")
+    results = bullDAO.getAllDetails()
+    return jsonify(results)
+
 # find by id
 #curl "http://127.0.0.1:5000/bulls/2"
 @app.route('/bulls/<int:id>')

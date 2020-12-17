@@ -53,10 +53,27 @@ class BullDAO:
         cursor.execute(sql)
         results = cursor.fetchall()
         returnArray = []
+        colnames=['id','code','name', "breed", "owner"]
         print(results)
         for result in results:
             print(result)
-            returnArray.append(self.convertToDictionary(result))
+            returnArray.append(self.convertToDictionary(result, colnames))
+        db.close()
+        return returnArray
+
+        # function to retrieve all bulls from the bull table in the database
+    def getAllDetails(self):
+        db = self.getConnection()
+        cursor = db.cursor()
+        sql="select * from bulldetails"
+        cursor.execute(sql)
+        results = cursor.fetchall()
+        returnArray = []
+        colnames=['code','sire','dam', 'calving', 'id']
+        print(results)
+        for result in results:
+            print(result)
+            returnArray.append(self.convertToDictionary(result, colnames))
         db.close()
         return returnArray
 
@@ -97,8 +114,8 @@ class BullDAO:
 
     # function that converts the data from the database to JSON
     # this function is called within the find by id and get all functions to convert the data retrieved from the db
-    def convertToDictionary(self, result):
-        colnames=['id','code','name', "breed", "owner"]
+    def convertToDictionary(self, result, colnames):
+       # colnames=['id','code','name', "breed", "owner"]
         item = {}
         
         if result:
