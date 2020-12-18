@@ -9,18 +9,20 @@
         <div>
             <table class="table" id="bullTable">
                 <tr>
-                        <!-- table headings set -->
-                        <th>Code</th>
-                        <th>Sire</th>
-                        <th>Dam</th>
-                        <th>Calving %</th>
-                        <th>ID</th>
+                    <!-- table headings set -->
+                    <th>Code</th>
+                    <th>Sire</th>
+                    <th>Dam</th>
+                    <th>Stars</th>
+                    <th>Star Value</th>
+                    <th>Reliability</th>
+                    <th>ID</th>
                 </tr> 
             </table>
         </div>
     </body>
     <script>
-        // function to populate the bull table
+        // function to populate the bull details table
         // function is called inside the function getAllAjax to populate the table with the data returned from the server via Ajax call
         function addBullToTable(bull){
             var tableElement = document.getElementById('bullTable')
@@ -32,12 +34,16 @@
             var cell3 = rowElement.insertCell(2);
             cell3.innerHTML = bull.dam
             var cell4 = rowElement.insertCell(3);
-            cell4.innerHTML = bull.calving
+            cell4.innerHTML = bull.stars
             var cell5 = rowElement.insertCell(4);
-            cell5.innerHTML = bull.id
+            cell5.innerHTML = bull.starvalue
+            var cell6 = rowElement.insertCell(5);
+            cell6.innerHTML = bull.reliability
+            var cell7 = rowElement.insertCell(6);
+            cell7.innerHTML = bull.id
         }
 
-             // Ajax call to get all bulls from the bulls page on the server 
+        // Ajax call to get all bulls from the bulls page on the server 
         function getAllAjax(){
         $.ajax({
             "url": "http://127.0.0.1:5000/bulldetails",

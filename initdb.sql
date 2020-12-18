@@ -32,17 +32,29 @@ insert into bulls(code, name, breed, owner) VALUES
 -- to select all entries in bulls table
 select * from bulls;
 
+-- create the second table in the database 
 -- adding a foreign key reference https://www.w3schools.com/sql/sql_foreignkey.asp
 CREATE TABLE bulldetails (
     code VARCHAR(10),
-    sire VARCHAR(20),
-    dam VARCHAR(20),
-    calving INT NOT NULL,
+    sire VARCHAR(200),
+    dam VARCHAR(200),
+    stars INT NOT NULL,
+    starvalue INT NOT NULL,
+    reliability INT NOT NULL,
     id INT NOT NULL,
-    PRIMARY KEY (code),
+    PRIMARY KEY(code),
     FOREIGN KEY (id) REFERENCES bulls(id)
     );
 
 -- insert into bulldetails table
-insert into bulldetails(code, sire, dam, calving, id) VALUES
-("FSZ", "Tinor", "Baronne", 10, 1);
+insert into bulldetails(code, sire, dam, stars, starvalue, reliability, id) VALUES
+("FSZ", "Tinor", "Baronne", 5, 127, 98, 1)
+("BBQ", "As De Trefle Du Vanove", "Ballyfin Unity", 5, 120, 98, 2)
+("CWI", "Otan", "F040", 5, 124, 98, 3)
+("CEQ", "Du Coin Jobeline", "Heroique", 1, 49, 93, 4)
+("LM2388", "Ondit", "Tinusa", 5, 116, 68, 5)
+("KCH", "Goldstar Echo", "Clenagh Urania", 1, 18, 74, 6)
+("CH4320", "Castor", "Gaffe", 4, 90, 57, 7);
+
+-- to select all entries in the bulldetails table
+select * from bulldetails;

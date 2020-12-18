@@ -69,7 +69,7 @@ class BullDAO:
         cursor.execute(sql)
         results = cursor.fetchall()
         returnArray = []
-        colnames=['code','sire','dam', 'calving', 'id']
+        colnames=['code','sire','dam', 'stars', 'starvalue', 'reliability', 'id']
         print(results)
         for result in results:
             print(result)
@@ -86,7 +86,8 @@ class BullDAO:
 
         cursor.execute(sql, values)
         result = cursor.fetchone()
-        bull=self.convertToDictionary(result)
+        colnames=['id','code','name', "breed", "owner"]
+        bull=self.convertToDictionary(result, colnames)
         db.close()
         return bull
 
