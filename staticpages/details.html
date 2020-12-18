@@ -1,11 +1,83 @@
+<!-- Data Representation Big Project -->
+<!-- John Dunne G00273895-->
+
 <html>
     <head>
-        <title> Bull Viewer </title>
+        <title> Bull Details </title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- CSS styles added below-->
+        <style type = "text/css"> 
+            .body {
+                background-color: #9e9e9ebd;
+            }
+
+            .headings {
+		        text-align: center;
+		        margin: 10px;
+		        color: white;
+		        background-color: #2200ffb3;
+		        font-family: Calibri;
+		        font-size: 40px;
+		        padding: 30px;
+		        border-style: solid;
+		        border-color: black;
+		        border-width: 5px;
+	        }
+
+            .paragraphs{
+		        text-align: center;
+		        margin: 10px;
+		        background-color: #aeff0066;
+		        color: black;
+		        font-family: Calibri;
+		        font-weight: bold;
+		        font-size: 25px;
+		        padding: 30px;
+		        border-style: solid;
+		        border-color: black;
+		        border-width: 5px;
+	        }
+
+            .headerbar {
+		        position: relative;
+		        background-color: #9e9e9ebd;
+		        text-align: center;
+		        margin: 10px;
+		        padding: 20px;
+		        border-style: solid;
+		        border-color: black;
+		        border-width: 5px;
+	        }
+	
+	        .button {
+		        width: 250px;
+		        font-size: 30px;
+		        font-family: Calibri;
+		        font-weight: bold;
+		        text-align: center;
+		        padding: 5px;
+		        background-color: white;
+		        color: black;
+		        border: 2px solid #4CAF50;
+	        }
+
+        </style> 
     </head>
     <body class="body">
+        <!-- heading 1 has been created containing the name of the webpage and assigned a CSS class -->
+        <h1 class="headings">Suckler Farming Ireland</h1> 
+        <!-- div containing buttons to log out and to go back to bull page -->
+        <div class="headerbar"> 
+            <!-- Button to redirect user to the Bull Viewer page -->
+            <button class="button" onclick= "window.location.href= 'index.html';">Bull Viewer</button> 
+            <!-- Log out button that redirects the user to the Login page -->
+            <button class="button" onclick= "window.location.href= 'Login.html';">Logout</button> 
+        </div>
+        <!-- heading 2 has been created containing information about the purpose of this webpage and assigned a CSS class -->
+        <h2 class="paragraphs">Please see below further details about the bulls in our database from the bull details table</h2>
+        <!-- div containing a table of data retrieved from the bull details table in MySQL database -->
         <div>
             <table class="table" id="bullTable">
                 <tr>
@@ -20,8 +92,36 @@
                 </tr> 
             </table>
         </div>
+        <!-- In this section of the homepage I am asking the user to give me feedback on the website -->
+        <!-- I am demonstrating the use of events by using a button event which calls a function when clicked-->
+        <div class ="paragraphs" id="feedback">We would appreciate if you could take a moment to give us your feedback on our website by clicking the appropriate button below:
+            <br>
+            <br>
+            <!-- button created with an on click event that will display a message to the user -->
+            <button class="button" onclick="changegood()">This website is helpful</button>
+            <button class="button" onclick="changebad()">This website is not helpful</button>
+        </div>
+        <!-- I have added a div containing my own images -->
+        <div class="headings">
+            <img src= "images/Image9.JPG" align="center" width="300" height="200" alt= "cows1" title= "cows">
+            <img src= "images/Image10.JPG" align="center" width="300" height="200" alt= "cows" title= "cows">
+            <img src= "images/Image11.JPG" align="center" width="300" height="200" alt= "cows" title= "cows">
+            <img src= "images/Image12.JPG" align="center" width="300" height="200" alt= "cows" title= "cows">
+        </div>
     </body>
     <script>
+        // I have created a variable called par which has been set equal to the div "feedback"
+        var par = document.getElementById("feedback");
+
+        // function created to give feedback 
+        function changegood(){
+	        alert("Thank you for your feedback we are glad you found the website helpful");
+        }
+         // function created to give feedback 
+        function changebad(){
+	        alert("We are sorry the website was not helpful, please feel free to send us any comments or suggestions by email");
+        }
+
         // function to populate the bull details table
         // function is called inside the function getAllAjax to populate the table with the data returned from the server via Ajax call
         function addBullToTable(bull){
