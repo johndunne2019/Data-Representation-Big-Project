@@ -4,6 +4,26 @@ John Dunne G00273895
 
 My project is based on retrieving data from a MySQL database called bullfinder. Within this database there are two tables of data which are linked by foreign key reference, further details later in this Readme file.
 
+## Python Anywhere
+
+This project is hosted on Python Anywhere at the below links:
+
+http://johndunne1.pythonanywhere.com/
+
+#### Web Pages:
+
+Login : http://johndunne1.pythonanywhere.com/Login.html
+
+BullViewer: http://johndunne1.pythonanywhere.com/BullViewer.html
+
+Bull Details: http://johndunne1.pythonanywhere.com/BullDetails.html
+
+#### Data retrieved from the MySQL database:
+
+http://johndunne1.pythonanywhere.com/bulls
+
+http://johndunne1.pythonanywhere.com/bulldetails
+
 ## Contents of this repository
 
 This repository contains:
@@ -47,7 +67,9 @@ To exit the virtual environment:
 #### If you already have a VM installed on your machine
 
 1. Pull my project from Github and navigate to the folder location.
+
 2. .\venv\Scripts\activate.bat
+
 3. python server.py
 
 To exit the virtual environment:
