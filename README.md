@@ -53,7 +53,7 @@ To exit the virtual environment:
 To exit the virtual environment:
 4. deactivate
 
-## How to download this repository
+## How to clone this repository
 
 1. Go to GitHub.
 2. Go to my repository: https://github.com/johndunne2019/Fundamentals-of-Data-Analysis-Project-2019
@@ -96,8 +96,6 @@ The commands that were used to create the database and table and insert data int
 #### I have added below an image of data contained in the bulls table:
 
 ![describebulls](/images/bulls.PNG)
-
-I intend to add a second table to the database later.
 
 #### I have added below an image of the bull details table when the describe command is run in MySQL.
 ![describebulls](/images/describebulldetails.PNG)

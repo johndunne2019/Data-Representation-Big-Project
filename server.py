@@ -41,7 +41,7 @@ def clear():
 
     return "done" 
 
-# get all
+# Get all data from bulls tables
 #curl "http://127.0.0.1:5000/bulls"
 @app.route('/bulls')
 def getAll():
@@ -49,7 +49,7 @@ def getAll():
     results = bullDAO.getAll()
     return jsonify(results)
 
-# get all
+# Get all data from bulldetails table
 #curl "http://127.0.0.1:5000/bulls"
 @app.route('/bulldetails')
 def getAllDetails():
@@ -57,15 +57,18 @@ def getAllDetails():
     results = bullDAO.getAllDetails()
     return jsonify(results)
 
-# find by id
+# Find by id - bulls tables
 #curl "http://127.0.0.1:5000/bulls/2"
 @app.route('/bulls/<int:id>')
 def findById(id):
     foundBull = bullDAO.findByID(id)
 
+    if not foundBull:
+        return "That id does not exist in the database"
+
     return jsonify(foundBull)
 
-# create a new bull should be id 8
+# Create a new bull in bulls table
 #curl  -i -H "Content-Type:application/json" -X POST -d "{\"code\":\"hello\",\"name\":\"someone\",\"breed\":\"someone\",\"owner\":\"someone\"}" http://127.0.0.1:5000/bulls
 @app.route('/bulls', methods=['POST'])
 def create():
@@ -84,20 +87,19 @@ def create():
     bulls['id'] = newId
     return jsonify(bulls)
 
-# update bull 8 added to database
+# Update an entry in the bulls table
 #curl  -i -H "Content-Type:application/json" -X PUT -d "{\"code\":\"update\",\"name\":\"update\",\"breed\":\"update\",\"owner\":\"update\"}" http://127.0.0.1:5000/bulls/8
 @app.route('/bulls/<int:id>', methods=['PUT'])
 def update(id):
     foundBull = bullDAO.findByID(id)
     # error handling if no bull found by the specified id
     if not foundBull:
+        return "That bull does not exist in the database"
         abort(404)
     # if not a json request 
     if not request.json:
         abort(400)
     reqJson = request.json
-   # if 'Price' in reqJson and type(reqJson['Price']) is not int:
-        #abort(400)
 
     if 'code' in reqJson:
         foundBull['code'] = reqJson['code']
@@ -111,11 +113,17 @@ def update(id):
     bullDAO.update(values)
     return jsonify(foundBull)
     
-# delete the newly created bull 8 
+# Delete an entry in the bulls table
 # CURL -X DELETE http://127.0.0.1:5000/bulls/8
 # should add some error handling for a case where a bull is not in the database 
 @app.route('/bulls/<int:id>' , methods=['DELETE'])
 def delete(id):
+    foundBull = bullDAO.findByID(id)
+    # error handling if no bull found by the specified id
+    if not foundBull:
+        return "That bull does not exist in the database"
+        abort(404)
+
     bullDAO.delete(id)
     return jsonify({"done":True})
 

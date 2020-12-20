@@ -33,7 +33,7 @@ class BullDAO:
         db = self.initConnectToDB()
         db.close()
             
-    # function to create new bulls in the database table
+    # function to create new bulls in the bulls database table
     def create(self, values):
         db = self.getConnection()
         cursor = db.cursor()
@@ -45,7 +45,7 @@ class BullDAO:
         db.close()
         return lastRowId
 
-    # function to retrieve all bulls from the bull table in the database
+    # function to retrieve all bulls from the bulls table in the database
     def getAll(self):
         db = self.getConnection()
         cursor = db.cursor()
@@ -61,7 +61,7 @@ class BullDAO:
         db.close()
         return returnArray
 
-        # function to retrieve all bulls from the bull table in the database
+    # function to retrieve all bulls from the bulldetails table in the database
     def getAllDetails(self):
         db = self.getConnection()
         cursor = db.cursor()

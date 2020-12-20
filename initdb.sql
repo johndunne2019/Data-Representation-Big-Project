@@ -48,12 +48,12 @@ CREATE TABLE bulldetails (
 
 -- insert into bulldetails table
 insert into bulldetails(code, sire, dam, stars, starvalue, reliability, id) VALUES
-("FSZ", "Tinor", "Baronne", 5, 127, 98, 1)
-("BBQ", "As De Trefle Du Vanove", "Ballyfin Unity", 5, 120, 98, 2)
-("CWI", "Otan", "F040", 5, 124, 98, 3)
-("CEQ", "Du Coin Jobeline", "Heroique", 1, 49, 93, 4)
-("LM2388", "Ondit", "Tinusa", 5, 116, 68, 5)
-("KCH", "Goldstar Echo", "Clenagh Urania", 1, 18, 74, 6)
+("FSZ", "Tinor", "Baronne", 5, 127, 98, 1),
+("BBQ", "As De Trefle Du Vanove", "Ballyfin Unity", 5, 120, 98, 2),
+("CWI", "Otan", "F040", 5, 124, 98, 3),
+("CEQ", "Du Coin Jobeline", "Heroique", 1, 49, 93, 4),
+("LM2388", "Ondit", "Tinusa", 5, 116, 68, 5),
+("KCH", "Goldstar Echo", "Clenagh Urania", 1, 18, 74, 6),
 ("CH4320", "Castor", "Gaffe", 4, 90, 57, 7);
 
 -- to select all entries in the bulldetails table
