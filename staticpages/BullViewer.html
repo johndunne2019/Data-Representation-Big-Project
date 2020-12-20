@@ -344,10 +344,11 @@
             return bull
         }
 
+        host = window.location.origin
         // Ajax call to get all bulls from the bulls page on the server 
         function getAllAjax(){
         $.ajax({
-            "url": "http://127.0.0.1:5000/bulls",
+            "url": host+"/bulls",
             "method":"GET",
             "data":"",
             "dataType": "JSON",
@@ -368,7 +369,7 @@
         function createBullAjax(bull){
         console.log(JSON.stringify(bull));
         $.ajax({
-            "url": "http://127.0.0.1:5000/bulls",
+            "url": host+"/bulls",
             "method":"POST",
             "data":JSON.stringify(bull),
             "dataType": "JSON",
@@ -390,7 +391,7 @@
         function updateBullAjax(bull){
             console.log(JSON.stringify(bull));
             $.ajax({
-                "url": "http://127.0.0.1:5000/bulls/"+encodeURI(bull.id),
+                "url": host+"/bulls/"+encodeURI(bull.id),
                 "method":"PUT",
                 "data":JSON.stringify(bull),
                 "dataType": "JSON",
@@ -410,7 +411,7 @@
         
             //console.log(JSON.stringify('deleting '+id));
             $.ajax({
-                "url": "http://127.0.0.1:5000/bulls/"+encodeURI(id),
+                "url": host+"/bulls/"+encodeURI(id),
                 "method":"DELETE",
                 "data":"",
                 "dataType": "JSON",

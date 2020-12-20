@@ -143,10 +143,11 @@
             cell7.innerHTML = bull.id
         }
 
+        host = window.location.origin
         // Ajax call to get all bulls from the bulls page on the server 
         function getAllAjax(){
         $.ajax({
-            "url": "http://127.0.0.1:5000/bulldetails",
+            "url": host+"/bulldetails",
             "method":"GET",
             "data":"",
             "dataType": "JSON",
