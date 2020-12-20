@@ -12,7 +12,7 @@ http://johndunne1.pythonanywhere.com/
 
 #### Web Pages:
 
-Login : http://johndunne1.pythonanywhere.com/Login.html
+Login: http://johndunne1.pythonanywhere.com/Login.html
 
 BullViewer: http://johndunne1.pythonanywhere.com/BullViewer.html
 
@@ -24,21 +24,31 @@ http://johndunne1.pythonanywhere.com/bulls
 
 http://johndunne1.pythonanywhere.com/bulldetails
 
+## To view on local machine
+
+After you have my server up and running (details later in this file) in your local machine go to:
+
+Login: http://127.0.0.1:5000/Login.html
+
+BullViewer: http://127.0.0.1:5000/BullViewer.html
+
+Bull Details: http://127.0.0.1:5000/BullDetails.html
+
 ## Contents of this repository
 
 This repository contains:
 
-* The commands used to create the database and tables in MySQL are contained in a file called initdb.sql in this repository.
-* Python DAO file to connect to the MySQL database and retrieve data from the database.
-* Python App server which should be run in a virtual environment.
+* **initdb.sql** - The commands used to create the database and tables in MySQL.
+* **bullDAO.py** - Python DAO file to connect to the MySQL database and retrieve data from the database.
+* **server.py** - Python App server which should be run in a virtual environment.
 * Static pages which serve up the data to the user in a web browser and allow the user to perform CRUD operations on the data. 
-    * Login.html which allows the user to enter log in credentials. I only have basic handling of logging in and any credentials entered in the correct format will bring the user to the main page which is BullViewer.html
-    * BullViewer.html - the main page which contains the data retrieved from the bulls table in the bullfinder database. The user can perform CRUD operations on the data through the BullViewer.html page. 
-    * BullDetails.html - A second webpage allowing the user to view the contents of the second table of data bull details. The user cannot perform CRUD operations on this data. 
-* dbconfigtemplate.py is a file that should hold the log in credentials to be read by the Python DAO file to connect to the MySql database.
-* requirements.txt contains the list of required packages that should be installed in a virtual environment in order for this server to run.
-* gitignore file which disregards the virtual environment on my machine and my own dbconfig file when pushing my project to Github.
-* Project Description pdf file contains the specification for this project. 
+    * **Login.html** - which allows the user to enter log in credentials. I only have basic handling of logging in and any credentials entered in the correct format will bring the user to the main page which is BullViewer.html
+    * **BullViewer.html** - the main page which contains the data retrieved from the bulls table in the bullfinder database. The user can perform CRUD operations on the data through the BullViewer.html page. 
+    * **BullDetails.html** - A second webpage allowing the user to view the contents of the second table of data bull details. The user cannot perform CRUD operations on this data. 
+* **dbconfigtemplate.py** - a file that should hold the log in credentials to be read by the Python DAO file to connect to the MySql database.
+* **requirements.txt** - contains the list of required packages that should be installed in a virtual environment in order for this server to run.
+* **.gitignore** file which disregards the virtual environment on my machine and my own dbconfig file when pushing my project to Github.
+* **Project Description** pdf file contains the specification for this project. 
 
 ## Virtual Environment 
 
